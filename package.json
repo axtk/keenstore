@@ -19,10 +19,7 @@
     "url": "git+https://github.com/axtk/keenstore.git"
   },
   "keywords": [
-    "store",
-    "events",
-    "emitter",
-    "subscribe"
+    "store"
   ],
   "author": "axtk",
   "license": "ISC",

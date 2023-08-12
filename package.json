@@ -1,0 +1,33 @@
+{
+  "name": "keenstore",
+  "version": "1.0.0",
+  "description": "Lightweight store offering subscription to changes",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "npm-run-all -s dist:clean dist:build",
+    "dist:clean": "node -e \"require('fs').rmSync('dist', {force: true, recursive: true});\"",
+    "dist:build": "esbuild index.ts --bundle --outfile=dist/index.js --platform=neutral --minify",
+    "prepublishOnly": "npm run build",
+    "preversion": "npm run test",
+    "test": "npm-run-all -s build test:build test:run",
+    "test:build": "esbuild tests.ts --bundle --outfile=dist/tests.js --platform=neutral",
+    "test:run": "node dist/tests.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/axtk/keenstore.git"
+  },
+  "keywords": [
+    "store",
+    "events",
+    "emitter",
+    "subscribe"
+  ],
+  "author": "axtk",
+  "license": "ISC",
+  "devDependencies": {
+    "esbuild": "^0.19.1",
+    "npm-run-all": "^4.1.5"
+  }
+}

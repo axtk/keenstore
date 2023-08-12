@@ -1,6 +1,6 @@
 # keenstore
 
-*Lightweight data store offering subscription to changes*
+*Zero-dependency data store offering subscription to changes*
 
 ## Installation
 

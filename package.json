@@ -1,7 +1,7 @@
 {
   "name": "keenstore",
   "version": "1.0.1",
-  "description": "Lightweight data store offering subscription to changes",
+  "description": "Zero-dependency data store offering subscription to changes",
   "main": "dist/index.js",
   "type": "module",
   "scripts": {

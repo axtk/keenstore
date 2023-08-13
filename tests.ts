@@ -15,8 +15,8 @@ let store = new Store(10);
 
 let testValue = [100, -3];
 let unsubscribe = [
-    store.onUpdate(() => testValue[0] += store.getState()),
-    store.onUpdate(() => testValue[1] *= store.getState()),
+    store.onUpdate(state => testValue[0] += state),
+    store.onUpdate(state => testValue[1] *= state),
 ];
 
 assert(store.getState(), 10);

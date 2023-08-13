@@ -1,14 +1,14 @@
 export type StoreStateUpdate<T> = (state: T) => T;
-export type StoreUpdateCallback = () => void;
+export type StoreUpdateCallback<T> = (nextState: T, prevState: T) => void;
 
 export class Store<T> {
     state: T;
-    callbacks: StoreUpdateCallback[];
+    callbacks: StoreUpdateCallback<T>[];
     constructor(data: T) {
         this.state = data;
         this.callbacks = [];
     }
-    onUpdate(callback: StoreUpdateCallback) {
+    onUpdate(callback: StoreUpdateCallback<T>) {
         this.callbacks.push(callback);
 
         return () => {
@@ -22,9 +22,12 @@ export class Store<T> {
         return this.state;
     }
     setState(update: T | StoreStateUpdate<T>) {
-        this.state = update instanceof Function ? update(this.state) : update;
+        let prevState = this.state;
+        let nextState = update instanceof Function ? update(this.state) : update;
+
+        this.state = nextState;
 
         for (let callback of this.callbacks)
-            callback();
+            callback(nextState, prevState);
     }
 }

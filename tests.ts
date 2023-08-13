@@ -20,7 +20,7 @@ let unsubscribe = [
 ];
 
 assert(store.getState(), 10);
-assert(store.listeners.length, 2);
+assert(store.callbacks.length, 2);
 
 store.setState(2);
 assert(store.getState(), 2);
@@ -33,7 +33,7 @@ assert(testValue[0], 77);
 assert(testValue[1], 150);
 
 unsubscribe[1]();
-assert(store.listeners.length, 1);
+assert(store.callbacks.length, 1);
 
 store.setState(12);
 assert(store.getState(), 12);
